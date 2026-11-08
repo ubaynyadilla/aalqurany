@@ -1,0 +1,16 @@
+menu open: 1
+  .menu.top: x=0-412 y=51-84
+  .menu.bottom: x=0-412 y=788-822
+  .pager: x=103-309 y=836-881
+  .quick.top-left: x=10-47 y=8-46
+  .quick.top-right: x=365-402 y=8-46
+  point(206,20) → DIV.stage
+  point(206,60) → DIV.menu top safe-top
+  point(206,130) → SPAN.word
+  point(60,840) → DIV.mushaf-line blank
+  point(206,840) → EM.
+  point(206,800) → DIV.menu bottom safe-bottom
+
+route now: http://127.0.0.1:5173/#/reader
+after 2nd tap at (206,60) → route: http://127.0.0.1:5173/#/reader
+  reader visible: 1

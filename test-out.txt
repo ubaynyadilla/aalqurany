@@ -1,0 +1,23 @@
+
+ RUN  v5.0.0 C:/Users/dhila_space/Documents/aalqurany/quran-app
+
+ ✓ src/services/__tests__/notifications.test.ts > describeSchedule > menandai reminder sekali pakai dengan tanggal 55ms
+ ✓ src/services/__tests__/notifications.test.ts > describeSchedule > menyebut interval tunggal tanpa angka 2ms
+ ✓ src/services/__tests__/notifications.test.ts > describeSchedule > menyebut interval kustom lebih dari satu 2ms
+ ✓ src/services/__tests__/mushafData.test.ts > data mushaf > berisi 604 halaman dan 6236 ayat unik 8ms
+ ✓ src/services/__tests__/mushafData.test.ts > data mushaf > tidak memotong ayat ke halaman berikutnya (ayat pojok) 4ms
+ ✓ src/services/__tests__/mushafData.test.ts > data mushaf > nomor baris tiap halaman berada dalam 1..15 dan urut 83ms
+ ✓ src/services/__tests__/mushafData.test.ts > data mushaf > metadata surah & juz lengkap, tiap juz punya halaman awal 1ms
+ ✓ src/services/__tests__/mushafData.test.ts > groupPageVerses > mengelompokkan kata per ayat sesuai urutan kemunculan 3ms
+ ✓ src/services/__tests__/mushafData.test.ts > groupPageVerses > memisahkan simbol nomor akhir ayat dari kata yang dihafal 2ms
+ ✓ src/services/__tests__/mushafData.test.ts > groupPageVerses > jumlah kata per ayat konsisten dengan token halaman 2ms
+ ✓ src/services/__tests__/mushafData.test.ts > groupPageVerses > mengambil N kata pertama untuk memorize mode 1ms
+ ✓ src/services/__tests__/mushafData.test.ts > detectHeaderLines > halaman 1 menyisakan baris untuk hiasan nama surah 2ms
+ ✓ src/services/__tests__/mushafData.test.ts > detectHeaderLines > halaman 604 menyisakan baris header untuk tiga surah terakhir 1ms
+ ✓ src/services/__tests__/mushafData.test.ts > detectHeaderLines > halaman tengah surah tanpa awal surah tidak wajib punya header 0ms
+
+ Test Files  2 passed (2)
+      Tests  14 passed (14)
+   Start at  07:28:26
+   Duration  1.26s (transform 51%, import 25%, tests 22%, worker 2%)
+

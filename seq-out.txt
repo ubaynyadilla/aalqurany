@@ -1,0 +1,15 @@
+BEFORE: "بِسْمِ ٱللَّهِ …" 16
+DURING: "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ" 39 revealedClass= 5
+AFTER : "بِسْمِ ٱللَّهِ …" 16
+
+--- reveal kedua tanpa hover ulang (persis urutan smoke test) ---
+revealed count: 5
+
+--- tray + drag setelah reveal ---
+tray visible: true
+marks: 1
+
+--- jumlah baris render ---
+page 1: mushaf-line=14 surah-header=1 total=15
+page 300: mushaf-line=14 surah-header=1 total=15
+page 582: mushaf-line=14 surah-header=1 total=15

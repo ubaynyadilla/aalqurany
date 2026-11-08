@@ -1,0 +1,171 @@
+@import 'tailwindcss';
+
+/* Scheherazade New (OFL) dibundel sebagai asset lokal — lihat catatan font
+   di bawah. @import harus berada di awal berkas menurut spesifikasi CSS. */
+@import '@fontsource/scheherazade-new/arabic-400.css';
+@import '@fontsource/scheherazade-new/arabic-600.css';
+
+/* Tema class-based supaya toggle Light/Dark manual (§3.1), bukan ikut sistem */
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant forest (&:where(.forest, .forest *));
+@custom-variant cream (&:where(.cream, .cream *));
+@custom-variant white-mode (&:where(.white-mode, .white-mode *));
+
+@theme {
+  /* Light Mode: mendekati warna kertas mushaf (coklat hangat) */
+  --color-paper: #f6f1e4;
+  --color-paper-edge: #e6dcc3;
+  --color-ink: #1f1b16;
+  --color-ink-soft: #6b6151;
+
+  /* Dark Mode: gelap tanpa menyilaukan saat dibaca lama */
+  --color-night: #0e0f11;
+  --color-night-edge: #23262b;
+  --color-night-ink: #ece4d2;
+  --color-night-ink-soft: #8b8578;
+
+  --color-accent: #1f6f5c;
+  --color-accent-soft: #2f9a80;
+
+  --font-mushaf: 'UthmanicHafs', 'Scheherazade New', 'Traditional Arabic', serif;
+}
+
+/* Forest Mode: hijau gelap tua, teks putih gading */
+:root.forest {
+  --color-paper: #0d1f12;
+  --color-paper-edge: #1e3825;
+  --color-ink: #e8f5eb;
+  --color-ink-soft: #9bbfa4;
+  --color-accent: #3dba7a;
+  --color-accent-soft: #5ad094;
+  /* Timpa variabel night agar komponen yg pakai .dark + var(--color-night*) juga ikut forest */
+  --color-night: #0d1f12;
+  --color-night-edge: #1e3825;
+  --color-night-ink: #e8f5eb;
+  --color-night-ink-soft: #9bbfa4;
+}
+
+/* Cream Mode: latar krem lembut, teks hitam */
+:root.cream {
+  --color-paper: #fdf8f0;
+  --color-paper-edge: #ede4d3;
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #5a5248;
+  --color-accent: #1f6f5c;
+  --color-accent-soft: #2f9a80;
+}
+
+/* White Mode: latar putih bersih, teks hitam */
+:root.white-mode {
+  --color-paper: #ffffff;
+  --color-paper-edge: #e0e0e0;
+  --color-ink: #111111;
+  --color-ink-soft: #555555;
+  --color-accent: #1f6f5c;
+  --color-accent-soft: #2f9a80;
+}
+
+/*
+ * Ukuran teks mushaf ditetapkan di satu tempat agar reader, memorize, dan
+ * panel ayat bantuan selalu seragam. Nilainya lebih kecil dari kesan pertama
+ * karena Scheherazade New punya metrik tubuh yang lebih besar daripada serif
+ * sistem — pada ukuran clamp yang sama ia tampak berlebihan.
+ */
+:root {
+  --mushaf-text: clamp(0.97rem, 4.6vw, 1.62rem);
+  --mushaf-text-sm: clamp(0.88rem, 3.95vw, 1.27rem);
+  /* Batas kanan-kiri kolom teks: ditarik ke tengah supaya titik pandang jatuh
+     di tengah halaman, tidak melebar sampai pinggir layar */
+  --mushaf-gutter: 5.5vw;
+  /* Bobot font Arab: agak bold supaya lebih mudah dibaca */
+  --mushaf-font-weight: 600;
+}
+
+/*
+ * Font mushaf, dua lapis.
+ *
+ * 1. UthmanicHafs (KFGQPC) — bentuk huruf persis mushaf Madinah, tapi tidak
+ *    boleh didistribusikan ulang, jadi berkasnya tidak ikut dalam repo. Bila
+ *    pengguna menaruhnya sendiri di src/assets/fonts/, ia otomatis dipakai.
+ * 2. Scheherazade New — Naskh berlisensi OFL, ikut dibundel sebagai asset
+ *    lokal supaya aplikasi tetap tampil rapi sepenuhnya offline (§5.2).
+ *
+ * `local()` di depan membuat berkas sistem dipakai lebih dulu bila ada,
+ * sehingga tidak ada permintaan gagal ketika berkas lokalnya belum dipasang.
+ */
+@font-face {
+  font-family: 'UthmanicHafs';
+  src:
+    local('KFGQPC Uthmanic Script HAFS'),
+    local('UthmanicHafs'),
+    local('Al Qalam Quran Majeed');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Teks mushaf tidak perlu bisa diseleksi — mencegah popup seleksi
+   muncul saat pengguna menyentuh layar untuk memanggil menu */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Area aman perangkat (notch / gesture bar), lewat variabel supaya bisa diganti
+ * di satu tempat. `--safe-top` DIBUAT 0 di aplikasi Android (lihat App.vue):
+ * di sana WebView sudah berhenti di bawah bar notifikasi, tetapi WebView tetap
+ * melaporkan tinggi bar itu lewat env(safe-area-inset-top) — bila dipakai apa
+ * adanya, ruang yang sama terhitung dua kali dan ada celah kosong di atas.
+ */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /*
+   * Ukuran nomor halaman (PageNotch) dan pills Memorize/Reminder di sampingnya.
+   * Keduanya membaca nilai yang SAMA supaya pills selalu sejajar dengan angka
+   * halaman, bukan sedikit lebih tinggi.
+   */
+  --notch-pad-bottom: 0.3rem;
+  --notch-num-size: 1.05rem;
+  --notch-num-height: calc(var(--notch-num-size) * 1.75);
+}
+
+.safe-top {
+  padding-top: var(--safe-top);
+}
+.safe-bottom {
+  padding-bottom: var(--safe-bottom);
+}
+
+/* Font mushaf global — semua elemen bertulisan Arab memakai bobot tebal */
+[lang="ar"],
+[dir="rtl"] .segment,
+[dir="rtl"] .bismillah,
+.font-mushaf,
+[style*="font-mushaf"] {
+  font-weight: var(--mushaf-font-weight);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

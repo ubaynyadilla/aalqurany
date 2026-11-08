@@ -1,0 +1,21 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.vitest.tsbuildinfo",
+    /* Test membaca berkas data langsung dari disk, jadi butuh API Node.
+       Resolusi modul tetap bergaya bundler seperti kode aplikasi. */
+    "types": ["node", "vite/client"],
+    "skipLibCheck": true,
+    "allowArbitraryExtensions": true,
+
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src/**/__tests__/**/*.ts", "src/**/*.ts"]
+}

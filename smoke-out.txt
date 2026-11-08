@@ -1,0 +1,20 @@
+PASS  Shortcut terakhir dibaca belum tampil pada pemakaian pertama
+PASS  Cover screen tampil
+PASS  Cover punya pills Reminder & Memorize
+PASS  Toggle tema mengaktifkan dark mode
+PASS  Preferensi tema bertahan setelah reload
+PASS  Reader terbuka
+PASS  Halaman dirender tepat 15 baris mushaf — 14 baris teks + 1 baris hiasan surah
+PASS  Teks Arab tampil — بِسْمِ
+PASS  Header nama surah tampil di halaman 1
+PASS  Menu tersembunyi saat membaca
+PASS  Ketuk tengah layar tidak memunculkan menu
+PASS  Ketuk area atas memunculkan pills menu
+PASS  Ketuk lagi menutup menu
+PASS  Ketuk area bawah memunculkan menu
+PASS  Menu tertutup kembali
+
+Smoke test error: locator.waitFor: Timeout 6000ms exceeded.
+Call log:
+[2m  - waiting for locator('.pager-label') to be visible[22m
+

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <!--
+    Logo Aalqurany: buku terbuka dengan pancaran cahaya seperti matahari terbit
+    dari halamannya. Dipakai sebagai sumber semua ikon Android (adaptive icon,
+    ikon status notifikasi, favicon).
+
+    Digambar di kanvas 512×512. Untuk adaptive icon Android, isi penting
+    dijaga di dalam lingkaran aman berdiameter ~66% (sekitar r=170 dari pusat).
+  -->
+  <defs>
+    <linearGradient id="pageL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdfbf4" />
+      <stop offset="1" stop-color="#e8dfc8" />
+    </linearGradient>
+    <linearGradient id="pageR" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fdfbf4" />
+      <stop offset="1" stop-color="#ded4ba" />
+    </linearGradient>
+    <linearGradient id="rayFade" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#f2c14e" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#f2c14e" stop-opacity="0.25" />
+    </linearGradient>
+  </defs>
+
+  <!-- ================= pancaran cahaya, memancar dari lipatan buku ================= -->
+  <g fill="url(#rayFade)">
+    <!-- Sinar tengah paling tinggi, lalu memendek ke samping — kesan matahari terbit -->
+    <path d="M256 78 L268 262 L244 262 Z" />
+    <path d="M186 104 L252 264 L232 268 Z" />
+    <path d="M326 104 L260 264 L280 268 Z" />
+    <path d="M128 152 L242 268 L228 280 Z" />
+    <path d="M384 152 L270 268 L284 280 Z" />
+    <path d="M96 216 L236 276 L230 292 Z" />
+    <path d="M416 216 L276 276 L282 292 Z" />
+  </g>
+
+  <!-- Bulatan cahaya di titik pancar, tepat di atas lipatan halaman -->
+  <circle cx="256" cy="268" r="34" fill="#f7d67a" opacity="0.55" />
+  <circle cx="256" cy="268" r="20" fill="#f2c14e" />
+
+  <!-- ============================ buku terbuka ============================ -->
+  <!-- Halaman kiri -->
+  <path
+    d="M256 300 C 216 272 168 260 112 262 L 112 396 C 168 394 216 406 256 434 Z"
+    fill="url(#pageL)"
+    stroke="#1f6f5c"
+    stroke-width="16"
+    stroke-linejoin="round"
+  />
+  <!-- Halaman kanan -->
+  <path
+    d="M256 300 C 296 272 344 260 400 262 L 400 396 C 344 394 296 406 256 434 Z"
+    fill="url(#pageR)"
+    stroke="#1f6f5c"
+    stroke-width="16"
+    stroke-linejoin="round"
+  />
+  <!-- Lipatan tengah -->
+  <path d="M256 300 L256 434" stroke="#1f6f5c" stroke-width="16" stroke-linecap="round" />
+
+  <!-- Garis-garis tulisan pada tiap halaman -->
+  <g stroke="#1f6f5c" stroke-width="11" stroke-linecap="round" opacity="0.4">
+    <path d="M152 306 H222" />
+    <path d="M146 340 H228" />
+    <path d="M146 374 H214" />
+    <path d="M290 306 H360" />
+    <path d="M284 340 H366" />
+    <path d="M298 374 H366" />
+  </g>
+</svg>

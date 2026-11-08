@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density"
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBarLaunch"
+            android:launchMode="singleTask"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+    </application>
+
+    <!-- Permissions -->
+
+    <!--
+        INTERNET hanya dipakai saat pengembangan (live reload). Mushaf sendiri
+        dibaca dari aset di dalam APK, jadi aplikasi berjalan penuh tanpa
+        jaringan.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--
+        Reminder (§3.3) memakai notifikasi lokal terjadwal:
+        - POST_NOTIFICATIONS wajib diminta sejak Android 13, tanpa ini reminder
+          tidak pernah tampil;
+        - SCHEDULE_EXACT_ALARM/USE_EXACT_ALARM agar pengingat tayang pada jam
+          yang dipilih, bukan digeser oleh penghemat baterai;
+        - RECEIVE_BOOT_COMPLETED supaya jadwal tetap hidup setelah HP dinyalakan
+          ulang.
+    -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!--
+        §auto-update: dibutuhkan untuk memicu installer APK lewat FileOpener
+        setelah APK update selesai diunduh ke Directory.Cache. Tanpa izin ini,
+        Android menolak membuka file .apk lewat intent ACTION_VIEW. User tetap
+        akan diminta konfirmasi manual "Izinkan aplikasi ini memasang aplikasi
+        lain?" sekali di awal (Android 8+) — ini bukan silent-install.
+    -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+</manifest>

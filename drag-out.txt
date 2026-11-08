@@ -1,0 +1,16 @@
+page label: Halaman 582 · juz 29
+verses: 5
+  verse[0] An-Naba : 1 box={"x":84.78125,"y":85.765625,"width":312.828125,"height":93.71875} text="عَمَّ يَتَسَآءَلُونَ …"
+  verse[1] An-Naba : 2 box={"x":84.78125,"y":187.484375,"width":312.828125,"height":93.71875} text="عَنِ ٱلنَّبَإِ …"
+  verse[2] An-Naba : 3 box={"x":84.78125,"y":289.203125,"width":312.828125,"height":93.71875} text="ٱلَّذِى هُمْ …"
+  verse[3] An-Naba : 4 box={"x":84.78125,"y":390.921875,"width":312.828125,"height":93.71875} text="كَلَّا سَيَعْلَمُونَ …"
+  verse[4] An-Naba : 5 box={"x":84.78125,"y":492.640625,"width":312.828125,"height":93.71875} text="ثُمَّ كَلَّا …"
+tray box: {"x":319.8125,"y":54.390625,"width":92.1875,"height":248.734375}
+circle btn box: {"x":341.609375,"y":160.015625,"width":49.59375,"height":51.875}
+target verse box: {"x":84.78125,"y":187.484375,"width":312.828125,"height":93.71875}
+drop point: 241.1953125 234.34375
+ghost after down: 1
+hover count: 1
+elementFromPoint: {"tag":"P","cls":"verse-text","key":"78:2"}
+marks after drop: 1
+notice: none
